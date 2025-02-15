@@ -220,7 +220,7 @@ SMODS.Joker { -- Essence of Comedy
     unlocked = true,
     discovered = false,
     blueprint_compat = true,
-    perishable_compat = true,
+    perishable_compat = false,
     eternal_compat = true,
     rarity = 2,
     cost = 6,
