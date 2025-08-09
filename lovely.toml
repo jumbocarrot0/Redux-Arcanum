@@ -253,6 +253,20 @@ if v == 'polychrome_alchemical' then v = 'polychrome' end
 # if v == 'polychrome_alchemical' then info_queue[#info_queue+1] = {key = 'e_polychrome_alchemical', set = 'Edition', config = {extra = 1.5}} end
 # '''
 
+# try to fix codex arcanum crashes with multiple mods(seems to be working)
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''if amt > 0 or amt < 0 then'''
+position = 'before'
+match_indent = true
+times = 1
+payload = '''
+if type(amt) == "table" and amt.to_number then
+    amt = amt:to_number()
+end
+'''
+
 [[patches]]
 [patches.pattern]
 target = "card.lua"
